@@ -1,0 +1,9 @@
+---
+- name: Run apt-get upgrade
+  become: true
+  ansible.builtin.apt:
+    upgrade: dist
+  tags:
+    - apt
+    - dist
+    - upgrade

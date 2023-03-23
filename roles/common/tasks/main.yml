@@ -6,9 +6,11 @@
 #     - "!main.yml"
 
 - include: configure-ssh-keys-root.yml
+  when: "'servers' in group_names"
 - include: configure-ssh-keys-user.yml
 - include: apt-update.yml
 - include: apt-upgrade.yml
+- include: apt-dist-upgrade.yml
 - include: install-python3.yml
 - include: install-docker-python-package.yml
 - include: install-docker.yml

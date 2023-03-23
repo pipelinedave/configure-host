@@ -1,8 +1,11 @@
 ---
-- name: Run apt-get upgrade
+- name: Update all packages to their latest version
   become: true
   ansible.builtin.apt:
-    upgrade: dist
+    name: "*"
+    state: latest
+    force: yes
   tags:
     - apt
     - upgrade
+    - update
