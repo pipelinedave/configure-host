@@ -1,0 +1,6 @@
+---
+- name: Configure Host Playbook
+  hosts: all
+  
+  roles:
+    - common

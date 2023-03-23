@@ -1,0 +1,23 @@
+---
+- name: Test Docker hello-world
+  become_user: "{{docker_user}}"
+  docker_container:
+    name: hello-world
+    image: hello-world
+    state: started
+    pull: true
+    tty: true
+  register: docker_hello_world
+  tags:
+    - docker
+    - test
+
+- name: Check if Docker hello-world ran successfully
+  assert:
+    that:
+      - docker_hello_world is defined
+      - docker_hello_world | success
+      - docker_hello_world.docker_output is search('Hello from Docker!')
+  tags:
+    - docker
+    - test

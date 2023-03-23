@@ -1,0 +1,8 @@
+# ignore inventory/
+inventory/*
+
+# ignore group_vars/
+group_vars/*
+
+# ignore roles/common/files/keys
+roles/common/files/keys/*

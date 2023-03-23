@@ -1,0 +1,13 @@
+---
+# task that adds the public keys in ./keys to the authorized_keys file of the root user
+- name: Add authorized key to root
+  become_user: root
+  become: true
+  authorized_key:
+    user: root
+    key: "{{ lookup('file', item) }}"
+  with_fileglob: "./keys/*.pub"
+  tags:
+    - ssh
+    - keys
+    - root

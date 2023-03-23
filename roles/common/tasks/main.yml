@@ -1,0 +1,19 @@
+---
+# include all tasks in this directory
+# - include: "{{ item }}"
+#   with_fileglob:
+#     - "*.yml"
+#     - "!main.yml"
+
+- include: configure-ssh-keys-root.yml
+- include: configure-ssh-keys-user.yml
+- include: apt-update.yml
+- include: apt-upgrade.yml
+- include: install-python3.yml
+- include: install-docker-python-package.yml
+- include: install-docker.yml
+- include: add-user-sudo-docker.yml
+- include: configure-sudoers-nopasswd.yml
+- include: install-docker-python-package.yml
+- include: configure-docker-daemon.yml
+#- include: test-user-docker.yml

@@ -1,0 +1,11 @@
+- name: Install Docker Loki plugin
+  docker_plugin:
+    name: grafana/loki-docker-driver:latest
+    state: present
+    grant_all_permissions: yes
+    alias: loki
+    enabled: yes
+  tags:
+    - docker
+    - loki
+    - install

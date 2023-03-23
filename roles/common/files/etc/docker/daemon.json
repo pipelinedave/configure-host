@@ -1,0 +1,10 @@
+{
+	"dns": ["10.33.33.10", "8.8.8.8"],
+	"debug": true,
+	"log-driver": "loki",
+	"log-opts": {
+		"loki-url": "http://172.19.0.31:3100/loki/api/v1/push",
+		"loki-batch-size": "400",
+		"loki-external-labels": "host={{.Host}},job=docker,container={{.Name}}"
+	}
+}

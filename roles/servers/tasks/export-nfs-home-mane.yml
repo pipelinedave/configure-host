@@ -1,0 +1,27 @@
+---
+# ensure nfs server is installed
+- name: Ensure NFS server is installed
+  become: true
+  ansible.builtin.apt:
+    name: nfs-kernel-server
+    state: present
+
+# ensure nfs export is present and restart nfs-server if changed
+- name: Add NFS export for /home/mane
+  become: true
+  lineinfile:
+    path: /etc/exports
+    line: '/home/mane 10.33.33.0/24(rw,sync,no_subtree_check)'
+    state: present
+    backup: yes
+    create: yes
+  register: nfs_export_changed
+  changed_when: nfs_export_changed.changed
+
+# restart nfs server if there were changes
+- name: Restart NFS server
+  become: true
+  service:
+    name: nfs-kernel-server
+    state: restarted
+  when: nfs_export_changed.changed

@@ -1,0 +1,3 @@
+---
+common_tasks:
+  - "{{ role_path }}/tasks/main.yml"

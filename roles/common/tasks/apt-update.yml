@@ -1,0 +1,8 @@
+---
+- name: Run apt-get update
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+  tags:
+    - apt
+    - update

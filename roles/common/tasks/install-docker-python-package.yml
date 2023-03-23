@@ -1,0 +1,15 @@
+---
+- name: Ensure deprecated docker-py package is not installed
+  pip:
+    name: 
+      - docker-py
+    state: absent
+    executable: pip3
+
+# force install docker python package
+- name: Install docker Python package
+  pip:
+    name: 
+      - docker
+    executable: pip3
+    state: forcereinstall

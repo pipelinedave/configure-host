@@ -1,0 +1,5 @@
+---
+- name: Include tasks for server role
+  include_tasks:
+    dir: tasks
+    fileglob: "*.yml"
