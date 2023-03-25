@@ -5,17 +5,15 @@
 #     - "*.yml"
 #     - "!main.yml"
 
-- include: configure-ssh-keys-root.yml
-  when: "'servers' in group_names"
-- include: configure-ssh-keys-user.yml
 - include: apt-update.yml
 - include: apt-upgrade.yml
 - include: apt-dist-upgrade.yml
+- include: configure-docker-daemon.yml
 - include: install-python3.yml
 - include: install-docker-python-package.yml
 - include: install-docker.yml
 - include: add-user-sudo-docker.yml
 - include: configure-sudoers-nopasswd.yml
-- include: install-docker-python-package.yml
-- include: configure-docker-daemon.yml
-#- include: test-user-docker.yml
+- include: configure-ssh-keys-root.yml
+- include: configure-ssh-keys-user.yml
+- include: test-user-docker.yml

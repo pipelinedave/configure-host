@@ -1,6 +1,5 @@
 ---
 - name: Test Docker hello-world
-  become_user: "{{docker_user}}"
   docker_container:
     name: hello-world
     image: hello-world

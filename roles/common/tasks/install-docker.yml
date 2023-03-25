@@ -1,9 +1,11 @@
 # task that installs docker
 ---
-- name: Install Docker
+- name: Install Docker and docker-compose
   become: true
   apt:
-    name: docker.io
+    name: 
+      - docker.io
+      - docker-compose
     state: present
   tags:
     - docker
