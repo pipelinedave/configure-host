@@ -6,3 +6,9 @@ group_vars/*
 
 # ignore roles/common/files/keys
 roles/common/files/keys/*
+
+# ignore env directory
+env/*
+
+# ignore artifacts directory
+artifacts/*
