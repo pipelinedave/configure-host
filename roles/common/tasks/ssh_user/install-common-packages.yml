@@ -1,0 +1,17 @@
+---
+- name: Install a collection of common packages
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg-agent
+    - software-properties-common
+    - sudo
+    - git
+    - wget
+    - neovim
+    - htop

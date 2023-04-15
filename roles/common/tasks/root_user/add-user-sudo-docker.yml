@@ -1,0 +1,16 @@
+---
+# task that adds a new user "{{ssh_user}}:docker" (1000:121) to the system with login shell /bin/bash
+# this user is added to the sudoers group and the docker group
+- name: Add new user "{{ssh_user}}" to the system
+  become: true
+  become_user: root
+  user:
+    name: "{{ssh_user}}"
+    uid: 1000
+    gid: 121
+    group: docker
+    groups: sudo,docker
+    shell: /bin/bash
+  tags:
+    - user
+    - docker

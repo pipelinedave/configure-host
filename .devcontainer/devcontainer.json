@@ -1,0 +1,34 @@
+{
+    "name": "Ansible",
+    "dockerFile": "Dockerfile",
+    "forwardPorts": [],
+    "mounts": [
+      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+      "source=/home/mane/.ssh,target=/home/mane/.ssh,type=bind,consistency=cached"
+    ],
+    "remoteUser": "mane",
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "redhat.ansible",
+          "vscoss.vscode-ansible",
+          "ms-azuretools.vscode-docker",
+          "GitHub.copilot",
+          "GitHub.copilot-labs",
+          "GitHub.github-vscode-theme",
+          "eamodio.gitlens",
+          "ms-vsliveshare.vsliveshare",
+          "DavidAnson.vscode-markdownlint"
+        ],
+        "settings": {
+          "terminal.integrated.profiles.linux": {
+            "bash": {
+              "path": "/bin/bash"
+            }
+          },
+          "terminal.integrated.defaultProfile.linux": "bash"
+        }
+      }
+    }
+  }
+  

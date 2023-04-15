@@ -1,6 +1,7 @@
 ---
 - name: Configure sudoers to NOPASSWD:ALL
   become: true
+  become_user: root
   lineinfile:
     path: /etc/sudoers.d/sudoers-nopasswd.conf
     line: '%sudo ALL=(ALL) NOPASSWD:ALL'

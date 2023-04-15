@@ -1,19 +1,43 @@
 ---
-# include all tasks in this directory
-# - include: "{{ item }}"
-#   with_fileglob:
-#     - "*.yml"
-#     - "!main.yml"
 
-- include: apt-update.yml
-- include: apt-upgrade.yml
-- include: apt-dist-upgrade.yml
-- include: configure-docker-daemon.yml
-- include: install-python3.yml
-- include: install-docker-python-package.yml
-- include: install-docker.yml
-- include: add-user-sudo-docker.yml
-- include: configure-sudoers-nopasswd.yml
-- include: configure-ssh-keys-root.yml
-- include: configure-ssh-keys-user.yml
-- include: test-user-docker.yml
+## task order definitions
+- name: Define root_user task order
+  set_fact:
+    root_user_task_order:
+      - configure-ssh-keys-root.yml
+      - configure-sudoers-nopasswd.yml
+      - add-user-sudo-docker.yml
+
+- name: Define ssh_user task order
+  set_fact:
+    ssh_user_task_order:
+      - configure-ssh-keys-user.yml
+      - apt-update.yml
+      - apt-upgrade.yml
+      - apt-dist-upgrade.yml
+      - install-common-packages.yml
+      - configure-docker-daemon.yml
+      - install-common-packages.yml
+      - install-python3.yml
+      - install-docker-python-package.yml
+      - install-docker.yml
+
+
+
+## task imports using the defined orders
+- name: Include root_user tasks in the specified order
+  import_tasks:
+    file: "root_user/{{ item }}"
+    loop: "{{ root_user_task_order }}"
+  loop_control:
+    loop_var: task_order_item
+  when: root_user_task_order is defined
+
+
+- name: Include ssh_user tasks in the specified order
+  import_tasks:
+    file: "ssh_user/{{ item }}"
+    loop: "{{ ssh_user_task_order }}"
+  loop_control:
+    loop_var: task_order_item
+  when: ssh_user_task_order is defined

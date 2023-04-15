@@ -1,6 +1,8 @@
 ---
 - name: Configure Host Playbook
-  hosts: all
-  
+  # hosts: all
+  # hosts: clients
+  hosts: servers
+
   roles:
     - common
