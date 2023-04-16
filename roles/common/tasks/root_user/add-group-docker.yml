@@ -1,0 +1,10 @@
+---
+# task that ensures that the docker group exists and has the correct GID
+- name: Ensure that the docker group exists and has the correct GID
+  become: true
+  become_user: root
+  group:
+    name: "docker"
+    gid: "{{ssh_user_gid}}"
+  tags:
+    - docker
