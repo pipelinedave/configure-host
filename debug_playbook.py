@@ -1,7 +1,7 @@
 import ansible_runner
 import os
 
-playbook_file = os.path.join(os.path.dirname(__file__), "playbook.yml")
+playbook_file = os.path.join(os.path.dirname(__file__), "play-common.yml")
 inventory_file = os.path.join(os.path.dirname(__file__), "inventory", "dawg-swarm.yml")
 
 runner = ansible_runner.run(

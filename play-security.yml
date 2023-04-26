@@ -1,0 +1,10 @@
+---
+- name: Configure Host Security Playbook
+# hosts: all
+# hosts: clients
+hosts: servers
+
+roles:
+  - devsec.hardening.ssh_hardening
+  - devsec.hardening.os_hardening
+  - robertdebock.roles.fail2ban

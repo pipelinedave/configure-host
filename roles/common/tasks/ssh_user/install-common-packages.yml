@@ -4,14 +4,4 @@
   ansible.builtin.apt:
     name: "{{ item }}"
     state: present
-  loop:
-    - apt-transport-https
-    - ca-certificates
-    - curl
-    - gnupg-agent
-    - software-properties-common
-    - sudo
-    - git
-    - wget
-    - neovim
-    - htop
+  loop: "{{ common_apt_packages_list }}"

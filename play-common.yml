@@ -1,5 +1,5 @@
 ---
-- name: Configure Host Playbook
+- name: Configure Host Common Playbook
   # hosts: all
   # hosts: clients
   hosts: servers

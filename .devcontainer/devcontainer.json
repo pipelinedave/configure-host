@@ -3,16 +3,20 @@
     "dockerFile": "Dockerfile",
     "forwardPorts": [],
     "mounts": [
-      "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+      // "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
       "source=/home/mane/.ssh,target=/home/mane/.ssh,type=bind,consistency=cached"
     ],
     "remoteUser": "mane",
+    "runArgs": [
+      "--cap-add=SYS_PTRACE",
+      "--security-opt",
+      "seccomp=unconfined"
+    ],
+    "postStartCommand": "pip install --no-cache-dir -r requirements.txt",
     "customizations": {
       "vscode": {
         "extensions": [
           "redhat.ansible",
-          "vscoss.vscode-ansible",
-          "ms-azuretools.vscode-docker",
           "GitHub.copilot",
           "GitHub.copilot-labs",
           "GitHub.github-vscode-theme",

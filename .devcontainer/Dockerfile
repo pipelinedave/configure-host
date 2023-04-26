@@ -8,7 +8,7 @@ RUN groupadd --gid 121 mane && \
 ENV HOME=/home/mane
 ENV PATH="${HOME}/.local/bin:${PATH}"
 
-# Install Ansible and other necessary tools
+# Install other necessary tools
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         ssh \
@@ -20,9 +20,6 @@ RUN apt-get update && \
 
 # Allow the non-root user to use sudo without a password
 RUN echo "mane ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
-# Install Ansible
-RUN pip install --no-cache-dir ansible ansible-lint ansible-runner
 
 # Switch to the non-root user
 USER mane
